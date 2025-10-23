@@ -1,0 +1,11 @@
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sNoWildcardsClusterRole
+metadata:
+  name: no-wildcards-clusterroles
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
+spec:
+  match:
+    kinds:
+      - apiGroups: ["rbac.authorization.k8s.io"]
+        kinds: ["ClusterRole"]

@@ -1,0 +1,23 @@
+apiVersion: templates.gatekeeper.sh/v1
+kind: ConstraintTemplate
+metadata:
+  name: k8snoport80
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  crd:
+    spec:
+      names:
+        kind: K8sNoPort80
+  targets:
+    - target: admission.k8s.gatekeeper.sh
+      rego: |
+        package k8snoport80
+
+        violation[{"msg": msg}] {
+          input.review.kind.kind == "Pod"
+          container := input.review.object.spec.containers[_]
+          port := container.ports[_]
+          port.containerPort == 80
+          msg := sprintf("El contenedor '%v' no puede usar el puerto 80", [container.name])
+        }
