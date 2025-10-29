@@ -3,7 +3,7 @@ kind: K8sNoPort80
 metadata:
   name: no-port-80-pods
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/hook: Sync
 spec:
   match:
     kinds:

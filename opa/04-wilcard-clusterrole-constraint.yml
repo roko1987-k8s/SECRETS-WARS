@@ -3,7 +3,7 @@ kind: K8sNoWildcardsClusterRole
 metadata:
   name: no-wildcards-clusterroles
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/hook: Sync
 spec:
   match:
     kinds:
