@@ -9,4 +9,4 @@ spec:
     kinds:
       - apiGroups: [""]
         kinds: ["Pod"]
-    namespaces: ["prod-test","prod"]
+    namespaces: ["prod-test","prod","dev"]
